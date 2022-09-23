@@ -42,33 +42,33 @@ class DemoControllerTest {
         .statusCode(200);
   }
 
-  // expected to fail because response does not match schema
-  @Test
-  void shouldFailDueToResponse() {
+//  // expected to fail because response does not match schema
+//  @Test
+//  void shouldFailDueToResponse() {
+//
+//    given()
+//        .port(randomServerPort)
+//        .filter(validationFilter)
+//        .when()
+//        .get("/demo-service/v1/departments/{departmentId}/employees", DemoService.INVALIDID)
+//        .then()
+//        .assertThat()
+//        .statusCode(200);
+//  }
 
-    given()
-        .port(randomServerPort)
-        .filter(validationFilter)
-        .when()
-        .get("/demo-service/v1/departments/{departmentId}/employees", DemoService.INVALIDID)
-        .then()
-        .assertThat()
-        .statusCode(200);
-  }
-
-  // expected to fail because path not correct
-  @Test
-  void shouldFailDueToPath() {
-
-    given()
-        .port(randomServerPort)
-        .filter(validationFilter)
-        .when()
-        .get("/demo-service/v1/department/{departmentId}/employees", UUID.randomUUID())
-        .then()
-        .assertThat()
-        .statusCode(200);
-  }
+//  // expected to fail because path not correct
+//  @Test
+//  void shouldFailDueToPath() {
+//
+//    given()
+//        .port(randomServerPort)
+//        .filter(validationFilter)
+//        .when()
+//        .get("/demo-service/v1/department/{departmentId}/employees", UUID.randomUUID())
+//        .then()
+//        .assertThat()
+//        .statusCode(200);
+//  }
 
   @Test
   void shouldCreateEmployee() throws JSONException {
@@ -137,44 +137,44 @@ class DemoControllerTest {
         .statusCode(400);
   }
 
-  @Test
-  void shouldFailDueInvalidResponse() throws JSONException {
+//  @Test
+//  void shouldFailDueInvalidResponse() throws JSONException {
+//
+//    JSONObject requestObject = new JSONObject();
+//    requestObject.put("email", DemoService.BADRESPONSE);
+//    requestObject.put("firstName", "Jane");
+//    requestObject.put("lastName", "Doe");
+//
+//    given()
+//        .port(randomServerPort)
+//        .filter(validationFilter)
+//        .when()
+//        .request()
+//        .contentType(ContentType.JSON)
+//        .body(requestObject.toString())
+//        .post("/demo-service/v1/departments/{departmentId}/employees", UUID.randomUUID())
+//        .then()
+//        .assertThat()
+//        .statusCode(201);
+//  }
 
-    JSONObject requestObject = new JSONObject();
-    requestObject.put("email", DemoService.BADRESPONSE);
-    requestObject.put("firstName", "Jane");
-    requestObject.put("lastName", "Doe");
-
-    given()
-        .port(randomServerPort)
-        .filter(validationFilter)
-        .when()
-        .request()
-        .contentType(ContentType.JSON)
-        .body(requestObject.toString())
-        .post("/demo-service/v1/departments/{departmentId}/employees", UUID.randomUUID())
-        .then()
-        .assertThat()
-        .statusCode(201);
-  }
-
-  @Test
-  void shouldFailDueInvalidRequest() throws JSONException {
-
-    JSONObject requestObject = new JSONObject();
-    requestObject.put("email", "someone@mail.com");
-    requestObject.put("firstName", "Jane");
-
-    given()
-        .port(randomServerPort)
-        .filter(validationFilter)
-        .when()
-        .request()
-        .contentType(ContentType.JSON)
-        .body(requestObject.toString())
-        .post("/demo-service/v1/departments/{departmentId}/employees", UUID.randomUUID())
-        .then()
-        .assertThat()
-        .statusCode(201);
-  }
+//  @Test
+//  void shouldFailDueInvalidRequest() throws JSONException {
+//
+//    JSONObject requestObject = new JSONObject();
+//    requestObject.put("email", "someone@mail.com");
+//    requestObject.put("firstName", "Jane");
+//
+//    given()
+//        .port(randomServerPort)
+//        .filter(validationFilter)
+//        .when()
+//        .request()
+//        .contentType(ContentType.JSON)
+//        .body(requestObject.toString())
+//        .post("/demo-service/v1/departments/{departmentId}/employees", UUID.randomUUID())
+//        .then()
+//        .assertThat()
+//        .statusCode(201);
+//  }
 }

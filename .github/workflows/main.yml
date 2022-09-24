@@ -47,6 +47,8 @@ jobs:
         EXIT_CODE: 1
     - name: Tag commit with enviornment
       run: |
+        git config --global user.email "you@example.com"
+        git config --global user.name "Github Action"
         git push origin :refs/tags/${{env.environment}}
         git tag -fa ${{env.environment}}
         git push origin main --tags

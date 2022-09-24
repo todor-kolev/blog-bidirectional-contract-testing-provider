@@ -37,6 +37,10 @@ jobs:
         oas_file: src/main/resources/openApi/openapi.yml
         results_file: target/surefire-reports/de.kreuzwerker.blogs.bidirectionalprovider.DemoControllerTest.txt
     - name: Publish provider contract on failing test run
+      run: |
+        git push origin :refs/tags/${{env.environment}}
+        git tag -fa ${{env.environment}}
+        git push origin main --tags
       # ensure we publish results even if the tests fail   
       if: failure() 
       uses: pactflow/actions/publish-provider-contract@v1.0.0

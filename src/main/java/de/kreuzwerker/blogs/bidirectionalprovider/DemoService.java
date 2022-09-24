@@ -3,7 +3,6 @@ package de.kreuzwerker.blogs.bidirectionalprovider;
 import de.kreuzwerker.blogs.bidirectionalprovider.exception.CustomException;
 import de.kreuzwerker.blogs.bidirectionalprovider.objects.Employee;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
@@ -21,14 +20,13 @@ public class DemoService {
     public static final String BADRESPONSE = "user@dropped.com";
 
     public List<Employee> getEmployees(String departmentId) {
-        System.out.println("getEmployees for departmentId: " + departmentId);
         switch(departmentId) {
             case INVALIDID -> {
                 // create a response that will not match the schema defintion, because email is a required field
                 Employee emp1 = Employee.builder().firstName("Jane").lastName("Doe").email("jane.dow@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
                 Employee emp2 = Employee.builder().firstName("John").lastName("Doe").email("doe@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
                 Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").employeeId(UUID.randomUUID().toString()).build();
-                return List.of(emp1, emp2);
+                return List.of(emp1, emp2, emp3);
             }
             case UNKNOWNID -> {
                 // throw not found error
@@ -42,7 +40,7 @@ public class DemoService {
                 // create a response that matches the schema and is harmless
                 Employee emp1 = Employee.builder().firstName("Jane").lastName("Doe").email("jane.dow@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
                 Employee emp2 = Employee.builder().firstName("John").lastName("Doe").email("doe@whoknows.com").employeeId(UUID.randomUUID().toString()).build();
-                Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").email("robin@doe.com").employeeId(UUID.randomUUID().toString()).build();
+                Employee emp3 = Employee.builder().firstName("Robin").lastName("Doe").email("robin@doe.com").employeeId(UUID.randomUUID().toString()).address("Address 3").build();
                 return List.of(emp1, emp2, emp3);
             }
         }

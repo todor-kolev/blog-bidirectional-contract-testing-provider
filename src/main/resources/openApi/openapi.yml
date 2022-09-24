@@ -143,6 +143,9 @@
           "employeeId":{
             "type":"string",
             "format":"uuid"
+          },
+          "address":{
+            "type":"string"
           }
         }
       },
